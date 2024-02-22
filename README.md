@@ -25,4 +25,6 @@
 2. Ask for Initial Unit
 3. Ask for Value in Initial Unit
 4. Ask for Final Unit
-5. If Converter is Shoesize Converter or Sizes of Clothes Converter ask for Gender
+5. If demanded Converter is Shoesize Converter or Sizes of Clothes Converter ask for Gender
+6. Convert the value by assignment or calculation
+7. Print the Value in Final Unit
