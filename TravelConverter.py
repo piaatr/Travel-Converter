@@ -147,7 +147,7 @@ Process: 1. calculate the final value by using the initial value and the convers
          2. return the final value
 '''
 def cm_to_in(initial_value):
-    final_value=initial_value/25.4 #conversion rate
+    final_value=initial_value/2.54 #conversion rate
     return final_value 
 
 
@@ -214,9 +214,86 @@ def celsius_to_fahrenheit(initial_value):
 #Functions where the conversion is determined by assignments (Lists need to be used
 
 #ShoeSize
+# Source: https://www.zappos.com/c/shoe-size-conversion
 
+'''
+Input: Initial unit, Final unit, Initial value
+Process: 1. Enter Matrix with the corresponding values ((shoesizeWoman[0] as list for US sizes, shoesizeWoman[1] for European sizes, shoesizeWoman[2] for sizes in cm)
+        2. Find (with while loop) the initiate value in the list of the initiate unit
+        3. Assign the final value to the value of the element in the list list of the final value, which is in the same column as the initiate value
+        4. Return value
+Output: Final value
+'''
+def shoesizeWoman(initial_unit,final_unit,initial_value):
+    dataWoman=[(4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12),(35,35,35.5,36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41,41.5,42,42.5),(20.8,21.3,21.6,22.2,22.5,23,23.5,23.8,24.1,24.6,25.1,25.4,25.9,26.2,26.7,27.1,27.6)]
+    active=True
+    counter=0
+    while active:
+        for col in range (len(dataWoman[0])):
+            if str(dataWoman[initial_unit-1][col])==initial_value:
+                final_value=str(dataWoman[final_unit-1][col])
+                active=False
+            else:
+                counter=counter+1
+        if counter==len(dataWoman[0]):
+            print('Invalid choice of initial value. Enter again.')
+            initial_value=str(input('Initial value: '))
+            counter=0
+    return final_value
+
+'''
+Input: Initial unit, Final unit, Initial value
+Process: 1. Enter Matrix with the corresponding values ((shoesizeMan[0] as list for US sizes, shoesizeMan[1] for European sizes, shoesizeMan[2] for sizes in cm)
+        2. Find (with while loop) the initiate value in the list of the initiate unit
+        3. Assign the final value to the value of the element in the list list of the final value, which is in the same column as the initiate value
+        4. Return value
+Output: Final value
+'''
+def shoesizeMan(initial_unit,final_unit,initial_value):
+    dataMan=[(6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,13,14,15,16),(39,39,40,40.5,41,41.5,42,42.5,43,43.5,44,44.5,45,46,47,48,49),(23.5,24.1,24.4,24.8,25.4,25.7,26,26.7,27,27.3,27.9,28.3,28.6,29.4,30.2,31,31.8)]
+    active=True
+    counter=0
+    while active:
+        for col in range (len(dataMan[0])):
+            if str(dataMan[initial_unit-1][col])==initial_value:
+                final_value=str(dataMan[final_unit-1][col])
+                active=False
+            else:
+                counter=counter+1
+        if counter==len(dataMan[0]):
+            print('Invalid choice of initial value. Enter again.')
+            initial_value=str(input('Initial value: '))
+            counter=0
+    return final_value
 
 #Sizes of Clothes
+#Sources: https://images.app.goo.gl/pw7MShcX7TPwbQgD9; https://images.app.goo.gl/rFsDwKMEkCvppyV27
+
+'''
+Input: Initial unit, Final unit, Initial value
+Process: 1. Enter Matrix with the corresponding values ((size[0] as list for US sizes, size[1] for European sizes, size[2] for mexican sizes, size[3] for sizes as letters)
+        2. Find (with while loop) the initiate value in the list of the initiate unit
+        3. Assign the final value to the value of the element in the list list of the final value, which is in the same column as the initiate value
+        4. Return value
+Output: Final value
+'''
+
+def size(initial_unit,final_unit,initial_value):
+    data=[(2,4,6,8,10,12,14,16,18),(32,34,36,38,40,42,44,46,48),(26,28,30,32,34,36,38,40,42),('XS','XS','S','S','M','M','L','L','XL','XL')]
+    active=True
+    counter=0
+    while active:
+        for col in range (len(data[0])):
+            if str(data[initial_unit-1][col])==initial_value:
+                final_value=str(data[final_unit-1][col])
+                active=False
+            else:
+                counter=counter+1
+        if counter==len(data[0]):
+            print('Invalid choice of initial value. Enter again.')
+            initial_value=str(input('Initial value: '))
+            counter=0
+    return final_value
 
 
 #Functions concerning decision making
@@ -282,7 +359,37 @@ Choose the conversion of temperature:
 For the conversion form Celsius to Fahrenheit enter 1
 For the conversion from Fahrenheit to Celsius enter 2
 ''')
+
+#shoesize menu
     
+def menu_shoesize_gender():
+        print('''
+Choose the gender for the conversion of shoesize:
+
+For the conversion of women´s shoe size enter 1
+For the conversion of men´s shoe size enter 2
+''')
+
+def menu_shoesize_converter():
+        print('''
+Choose the units of the shoesize you want to convert:
+
+For unit "US" enter 1
+For unit "Europe" enter 2
+For unit "Centimeters" enter 3
+''')
+
+#size menu
+
+def menu_size_converter():
+        print('''
+Choose the units of the size you want to convert:
+
+For unit "US" enter 1
+For unit "Europe" enter 2
+For unit "Mexiko" enter 3
+For unit "Letter" enter 4
+''')
 #general menu
 
 def choice():
@@ -428,10 +535,98 @@ Invalid choice: Try again!''')
                         print('Invalid choice: Enter decision again.')
                         choice()
                         decision=int(input('Your decision: '))
-                            
-                             
+        elif converter==4: #shoesize converter
+            shoesize_active=True
+            while shoesize_active:
+                menu_shoesize_gender()
+                choice_gender=int(input('Your choice: '))
+                shoesize_gender_active=True
+                while shoesize_gender_active:
+                    if choice_gender==1:
+                        gender_active=True
+                        while gender_active:
+                            menu_shoesize_converter()
+                            initial_unit=int(input('Initial unit: '))
+                            final_unit=int(input('Final unit: '))
+                            initial_value=str(input('Initial value: '))
+                            if initial_unit==1 or initial_unit==2 or initial_unit==3 and final_unit==1 or final_unit==2 or final_unit==3:
+                                print('The final value is', shoesizeWoman(initial_unit,final_unit,initial_value))
+                                gender_active=False
+                            else:
+                                print('Invalid choice. Enter units and value again.')
+                        shoesize_gender_active=False
+                    if choice_gender==2:
+                        gender_active=True
+                        while gender_active:
+                            menu_shoesize_converter()
+                            initial_unit=int(input('Initial unit: '))
+                            final_unit=int(input('Final unit: '))
+                            initial_value=str(input('Initial value: '))
+                            if initial_unit==1 or initial_unit==2 or initial_unit==3 and final_unit==1 or final_unit==2 or final_unit==3:
+                                print('The final value is', shoesizeMan(initial_unit,final_unit,initial_value))
+                                gender_active=False
+                            else:
+                                print('Invalid choice. Enter units and value again.')
+                        shoesize_gender_active=False
+                    else:
+                        print('Invalid choice. Enter gender again.')
+                        menu_shoesize_gender()
+                        choice_gender=int(input('Your choice: '))
+                choice()
+                decision=int(input('Your decision: '))
+                decision_shoesize_active=True
+                while decision_shoesize_active==True:
+                    if decision==1:
+                        decision_shoesize_active=False
+                    elif decision==2:
+                        decision_shoesize_active=False
+                        shoesize_active=False
+                    elif decision==3:
+                        decision_shoesize_active=False
+                        shoesize_active=False
+                        active=False
+                        print('You have exited the Travel-Converter')
+                    else:
+                        print('Invalid choice: Enter decision again.')
+                        choice()
+                        decision=int(input('Your decision: '))
+        elif converter==5: #size
+            size_active=True
+            while size_active:
+                menu_size_converter()
+                initial_unit=int(input('Initial unit: '))
+                final_unit=int(input('Final unit: '))
+                initial_value=str(input('Initial value: '))
+                if initial_unit==1 or initial_unit==2 or initial_unit==3 or initial_unit==4 and final_unit==1 or final_unit==2 or final_unit==3 or final_unit==4:
+                    print('The final value is', size(initial_unit,final_unit,initial_value))
+                    gender_active=False
+                else:
+                    print('Invalid choice. Enter units and value again.')
+                choice()
+                decision=int(input('Your decision: '))
+                decision_size_active=True
+                while decision_size_active==True:
+                    if decision==1:
+                        decision_size_active=False
+                    elif decision==2:
+                        decision_size_active=False
+                        size_active=False
+                    elif decision==3:
+                        decision_size_active=False
+                        size_active=False
+                        active=False
+                        print('You have exited the Travel-Converter')
+                    else:
+                        print('Invalid choice: Enter decision again.')
+                        choice()
+                        decision=int(input('Your decision: '))
+
 main()
-
-
-
-                                        
+                
+                
+                        
+                        
+                        
+                        
+                    
+                             
