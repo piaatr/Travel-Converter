@@ -17,7 +17,7 @@ A list of the project's functions is shown below. Additional information such as
 
 •	Shoesize Converter (Units: EURO, USA, cm),(Conversion: Assignment); (Needed Information: Assignments of values); (Input: Gender, Initial Unit, final unit, value in initial unit); (Output: Value in final unit for certain gender)
 
-•	Sizes of Clothes Converter (Units: EURO(Germany), US, Mex, Letters), (Conversion: Assignment); (Needed Information: Assignments of values); (Input: Gender, Initial Unit, final unit, value in initial unit); (Output: Value in final unit for certain gender)
+•	Sizes of Clothes Converter (Units: EURO(Germany), US, Mex, Letters), (Conversion: Assignment); (Needed Information: Assignments of values); (Input: Initial Unit, final unit, value in initial unit); (Output: Value in final unit for certain gender)
 
 ### Algorithm
 
