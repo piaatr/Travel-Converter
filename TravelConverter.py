@@ -101,7 +101,7 @@ Process: 1. calculate the final value by using the initial value and the convers
          2. return the final value
 '''
 def in_to_cm(initial_value):
-    final_value=initial_value*25.4 #conversion rate
+    final_value=initial_value*2.54 #conversion rate
     return final_value 
 
     
@@ -224,6 +224,34 @@ Process: 1. Enter Matrix with the corresponding values ((shoesizeWoman[0] as lis
         4. Return value
 Output: Final value
 '''
+
+
+#shoesizeWoman with a file
+
+'''
+def shoesizeWoman(initial_unit,final_unit,initial_value):
+    
+    dataWomanShoesize=open('shoesizesWomen.txt','r')
+    dataWoman=datWomanShoesize.readlines()
+    active=True
+    counter=0
+    while active:
+        for col in range (len(dataWoman[0])):
+            if str(dataWoman[initial_unit-1][col])==initial_value:
+                final_value=str(dataWoman[final_unit-1][col])
+                active=False
+            else:
+                counter=counter+1
+        if counter==len(dataWoman[0]):
+            print('Invalid choice of initial value. Enter again.')
+            initial_value=str(input('Initial value: '))
+            counter=0
+    return final_value
+'''
+
+
+#shoesizeWoman with a matrix
+
 def shoesizeWoman(initial_unit,final_unit,initial_value):
     dataWoman=[(4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12),(35,35,35.5,36,36.5,37,37.5,38,38.5,39,39.5,40,40.5,41,41.5,42,42.5),(20.8,21.3,21.6,22.2,22.5,23,23.5,23.8,24.1,24.6,25.1,25.4,25.9,26.2,26.7,27.1,27.6)]
     active=True
@@ -241,6 +269,7 @@ def shoesizeWoman(initial_unit,final_unit,initial_value):
             counter=0
     return final_value
 
+
 '''
 Input: Initial unit, Final unit, Initial value
 Process: 1. Enter Matrix with the corresponding values ((shoesizeMan[0] as list for US sizes, shoesizeMan[1] for European sizes, shoesizeMan[2] for sizes in cm)
@@ -249,6 +278,29 @@ Process: 1. Enter Matrix with the corresponding values ((shoesizeMan[0] as list 
         4. Return value
 Output: Final value
 '''
+
+#shoesizeMan with a file
+'''
+def shoesizeMan(initial_unit,final_unit,initial_value):
+    dataManShoesize=open('shoesizesMen.txt','r')
+    dataMan=dataManShoesize.readlines()
+    active=True
+    counter=0
+    while active:
+        for col in range (1,len(dataMan[0])):
+            if str(dataMan[initial_unit-1][col])==initial_value:
+                final_value=str(dataMan[final_unit-1][col])
+                active=False
+            else:
+                counter=counter+1
+        if counter==len(dataMan[0])-1:
+            print('Invalid choice of initial value. Enter again.')
+            initial_value=str(input('Initial value: '))
+            counter=0
+    return final_value
+'''
+
+#shoesizeMan with a matrix
 def shoesizeMan(initial_unit,final_unit,initial_value):
     dataMan=[(6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,13,14,15,16),(39,39,40,40.5,41,41.5,42,42.5,43,43.5,44,44.5,45,46,47,48,49),(23.5,24.1,24.4,24.8,25.4,25.7,26,26.7,27,27.3,27.9,28.3,28.6,29.4,30.2,31,31.8)]
     active=True
@@ -278,8 +330,10 @@ Process: 1. Enter Matrix with the corresponding values ((size[0] as list for US 
 Output: Final value
 '''
 
+#size with a matrix
+
 def size(initial_unit,final_unit,initial_value):
-    data=[(2,4,6,8,10,12,14,16,18),(32,34,36,38,40,42,44,46,48),(26,28,30,32,34,36,38,40,42),('XS','XS','S','S','M','M','L','L','XL','XL')]
+    data=[(2,4,6,8,10,12,14,16,18),(32,34,36,38,40,42,44,46,48),(26,28,30,32,34,36,38,40,42),('XS','S','S','M','M','L','L','XL','XL')]
     active=True
     counter=0
     while active:
@@ -295,7 +349,27 @@ def size(initial_unit,final_unit,initial_value):
             counter=0
     return final_value
 
-
+#size with a file
+'''
+def size(initial_unit,final_unit,initial_value):
+    #data=[(2,4,6,8,10,12,14,16,18),(32,34,36,38,40,42,44,46,48),(26,28,30,32,34,36,38,40,42),('XS','S','S','M','M','L','L','XL','XL')]
+    dataSize=open('size.txt','r')
+    data=dataSize.readlines()
+    active=True
+    counter=0
+    while active:
+        for col in range (1,len(data[0])):
+            if str(data[initial_unit-1][col])==initial_value:
+                final_value=str(data[final_unit-1][col])
+                active=False
+            else:
+                counter=counter+1
+        if counter==len(data[0]):
+            print('Invalid choice of initial value. Enter again.')
+            initial_value=str(input('Initial value: '))
+            counter=0
+    return final_value
+'''
 #Functions concerning decision making
 
 #menu for currency
@@ -620,13 +694,6 @@ Invalid choice: Try again!''')
                         print('Invalid choice: Enter decision again.')
                         choice()
                         decision=int(input('Your decision: '))
-
-main()
-                
-                
-                        
-                        
-                        
-                        
                     
-                             
+                          
+main()
